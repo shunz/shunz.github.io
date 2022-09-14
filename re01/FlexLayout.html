@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Layout</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #eee;
+    }
+
+    /* * {
+      border: 1px solid #000;
+    } */
+
+    .flex {
+      display: flex;
+    }
+
+    .flex1 {
+      flex: 1;
+    }
+
+    aside {
+      width: 200px;
+      z-index: 2;
+    }
+
+    .avatar {
+      padding: 10px;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #999;
+      ;
+    }
+
+    .avatar img {
+      margin-right: 12px;
+    }
+
+    nav {}
+
+    .navItem {
+      padding: 10px 20px;
+      border-bottom: 1px solid rgb(188, 188, 188);
+      font-size: 15px;
+      color: #666;
+    }
+
+    .white {
+      background-color: #fff;
+      box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+    }
+
+    .column {
+      flex-direction: column;
+    }
+
+    .headBar {
+      height: 60px;
+      z-index: 1;
+    }
+
+    .content {
+      overflow: auto;
+    }
+
+    .content::-webkit-scrollbar {
+      display: none;
+    }
+
+    .leftBox {
+      flex: 3;
+    }
+
+    .rightBox {
+      flex: 1;
+    }
+
+    .hintBox {
+      height: 150px;
+    }
+
+    .msgBox {
+      height: 300px;
+    }
+
+    .dataBox {}
+
+    .dataBlock {
+      height: 100px;
+    }
+
+    .listBox {}
+
+    .listBlock {
+      height: 160px;
+    }
+
+    .mg8 {
+      margin: 8px;
+    }
+
+    .mgr8 {
+      margin-right: 8px;
+    }
+
+    .mgt8 {
+      margin-top: 8px;
+    }
+
+    /* Mobile Device Style */
+    @media (max-width: 600px) {
+      .aside_m {
+        display: none;
+      }
+
+      .content_m, .dataBox_m {
+        flex-direction: column;
+      }
+
+      .rightBox_m {
+        margin-left: 8px;
+      }
+
+      .dataBlock_m {
+        margin: 0 0 8px;
+        flex: auto;
+      }
+    }
+  </style>
+</head>
+
+<body class="flex">
+  <!-- Sidebar -->
+  <aside class="white aside_m">
+    <div class="avatar flex">
+      <img src="../assets/images/logo.png" alt="Logo" width="40px" height="40px">
+      <div>Shunz</div>
+    </div>
+    <nav class="flex1">
+      <div class="navItem">navItem1</div>
+      <div class="navItem">navItem2</div>
+      <div class="navItem">navItem3</div>
+      <div class="navItem">navItem4</div>
+      <div class="navItem">navItem5</div>
+    </nav>
+  </aside>
+
+  <!-- Main area -->
+  <main class="flex1 flex column">
+    <!-- Head bar -->
+    <div class="headBar white">
+
+    </div>
+    <!-- Content -->
+    <div class="content flex1 flex content_m">
+      <div class="leftBox flex column mg8">
+        <div class="dataBox flex dataBox_m">
+          <div class="dataBlock dataBlock_m flex1 white mgr8"></div>
+          <div class="dataBlock dataBlock_m flex1 white mgr8"></div>
+          <div class="dataBlock dataBlock_m flex1 white mgr8"></div>
+          <div class="dataBlock dataBlock_m flex1 white"></div>
+        </div>
+        <div class="listBox flex column">
+          <div class="listBlock flex column white mgt8"></div>
+          <div class="listBlock flex column white mgt8"></div>
+          <div class="listBlock flex column white mgt8"></div>
+          <div class="listBlock flex column white mgt8"></div>
+          <div class="listBlock flex column white mgt8"></div>
+          <div class="listBlock flex column white mgt8"></div>
+          <div class="listBlock flex column white mgt8"></div>
+        </div>
+      </div>
+      <div class="rightBox flex column mgr8 mgt8 rightBox_m">
+        <div class="hintBox white"></div>
+        <div class="msgBox white mgt8"></div>
+      </div>
+    </div>
+
+  </main>
+</body>
+
+</html>
