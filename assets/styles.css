@@ -3,6 +3,11 @@
 	padding: 40px;
 }
 
+#logo {
+	width: 120px;
+	height: 120px;
+}
+
 #content {
 	max-width: 480px;
 	margin: 30px auto;
