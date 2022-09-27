@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Record & Remind the most important thing at present, can be set as the start page of browser. | 记录和提醒当前最重要的事，可以设置为浏览器起始页 Tab" />
+  <title>Browser Start Page</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .bg {
+      background-image: url("https://source.unsplash.com/random");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      /* filter: blur(4px); */
+      /* opacity: 0.9; */
+      z-index: -1;
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #inputBox {
+      border: 0;
+      border-bottom: 2px solid #fff;
+      padding: 4px 2px;
+      display: block;
+      background-color: #00000050;
+      line-height: 1.5;
+      outline: none;
+      text-align: center;
+      transition: border-color 0.2s ease-in-out;
+      border-radius: 8px;
+      color: #eee;
+      font-size: 1.6rem;
+      width: 60vw;
+      max-width: 90%;
+    }
+
+    #btn {
+      margin-left: 20px;
+      margin-right: 10px;
+      color: #eee;
+      background-color: #00000050;
+      border-radius: 8px;
+      /* border: 1.5px solid #ccc; */
+      height: 40px;
+      width: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 30px;
+      cursor: pointer;
+    }
+
+    input::placeholder {
+      color: #999;
+    }
+
+    input::-webkit-input-placeholder {
+      color: #999;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+  <div class="box">
+    <input placeholder="Task?" id="inputBox" />
+    <span id="btn" onclick="change()">Add</span>
+  </div>
+
+  <script>
+    let isFilled = false;
+    let data = window.localStorage.getItem("task");
+    if (data) {
+      document.getElementById("inputBox").value = data;
+      change();
+    }
+
+    function change() {
+      let btn = document.getElementById("btn");
+      let inputBox = document.getElementById("inputBox");
+
+      if (isFilled) {
+        isFilled = false;
+        btn.innerText = "Add";
+        inputBox.style.borderBottomColor = "#fff";
+        inputBox.value = "";
+        inputBox.readOnly = false;
+        window.localStorage.removeItem("task");
+      } else if (inputBox.value !== "") {
+        isFilled = true;
+        btn.innerText = "Reset";
+        inputBox.style.borderBottomColor = "transparent";
+        inputBox.readOnly = true;
+        window.localStorage.setItem("task", inputBox.value);
+      }
+    }
+  </script>
+</body>
+
+</html>
